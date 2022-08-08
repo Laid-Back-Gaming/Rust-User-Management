@@ -62,7 +62,7 @@ namespace Oxide.Plugins
         void LoadUser(BasePlayer player)
         {
             // Get the player's Steam ID 64.
-            String steamid = player.UserIDString;
+            UInt64 steamid = UInt64.Parse(player.UserIDString);
             String name = player.displayName;
 
             // Add a debug message because why not...
@@ -158,7 +158,7 @@ namespace Oxide.Plugins
                         RemoveGroup(player, "vip2");
                     }
                 }
-            }, this, RequestMethod.GET, headers);
+            }, this, RequestMethod.GET);
         }
 
         // Helper.
