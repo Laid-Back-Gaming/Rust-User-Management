@@ -13,7 +13,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Oxide.Plugins
 {
-    [Info("GFL's User Management", "Roy (Christian Deacon)", "0.1")]
+    [Info("LBG User Management", "Roy (Christian Deacon)", "0.2")]
     
     public class UserManagement : RustPlugin
     {
@@ -110,37 +110,37 @@ namespace Oxide.Plugins
                 }
 
                 // Add the user to whatever group they're supposed to be in and remove other groups.
-                if (groupID == 1)
+                if (groupID == 3)
                 {
-                    player.IPlayer.AddToGroup("member");
+                    player.IPlayer.AddToGroup("vip3");
 
                     // Remove existing groups if need to be.
                     if ((bool)Config["RemoveExisting"])
                     {
-                        RemoveGroup(player, "supporter");
-                        RemoveGroup(player, "vip");
+                        RemoveGroup(player, "vip1");
+                        RemoveGroup(player, "vip2");
                     }
                 }
                 else if (groupID == 2)
                 {
-                    player.IPlayer.AddToGroup("supporter");
+                    player.IPlayer.AddToGroup("vip2");
 
                     // Remove existing groups if need to be.
                     if ((bool)Config["RemoveExisting"])
                     {
-                        RemoveGroup(player, "member");
-                        RemoveGroup(player, "vip");
+                        RemoveGroup(player, "vip1");
+                        RemoveGroup(player, "vip3");
                     }
                 }
                 else if (groupID == 3)
                 {
-                    player.IPlayer.AddToGroup("vip");
+                    player.IPlayer.AddToGroup("vip1");
 
                     // Remove existing groups if need to be.
                     if ((bool)Config["RemoveExisting"])
                     {
-                        RemoveGroup(player, "member");
-                        RemoveGroup(player, "supporter");
+                        RemoveGroup(player, "vip2");
+                        RemoveGroup(player, "vip3");
                     }
                 }
                 else
@@ -149,13 +149,13 @@ namespace Oxide.Plugins
                     if ((bool)Config["RemoveExistingNoGroup"])
                     {
                         // Member.
-                        RemoveGroup(player, "member");
+                        RemoveGroup(player, "vip1");
 
                         // Supporter.
-                        RemoveGroup(player, "supporter");
+                        RemoveGroup(player, "vip2");
 
                         // VIP.
-                        RemoveGroup(player, "vip");
+                        RemoveGroup(player, "vip2");
                     }
                 }
             }, this, RequestMethod.GET, headers);
