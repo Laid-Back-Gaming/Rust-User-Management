@@ -1,7 +1,7 @@
 # Rust User Management (C#)
 
 ## Description
-A plugin created in C# for Rust (Oxide/UMod). This plugin interacts with the GFL API and assigns users their appropriate group on player connect or when the `um.reloadusers` console command is executed. This was initially released on GFL's GitLab [here](https://gitlab.gflclan.com).
+A plugin created in C# for Rust (Oxide/UMod). 
 
 ## Installation.
 Place the `UserManagement.cs` file inside of `RustServer/oxide/plugins`. Afterwards, edit `RustServer/oxide/config/UserManagement.json` to your needs.
