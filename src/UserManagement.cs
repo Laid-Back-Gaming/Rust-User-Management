@@ -92,17 +92,7 @@ namespace Oxide.Plugins
                 // Parse request as JSON.
                 var json = JObject.Parse(response);
 
-                int err = (int)json.GetValue("error");
-
-                // Check for invalid token.
-                if (err == 401)
-                {
-                    Puts($"Invalid token for GET request. {name} ({steamid}). URL - " + Config["URL"].ToString() + ", Endpoint = " + Config["Endpoint"].ToString() + ", Token = " + Config["Token"].ToString() + ", Code = " + code);
-
-                    return;
-                }
-
-                int groupID = (int)json.GetValue("group");
+                int groupID = (int)json.SelectToken("group");
 
                 if ((bool)Config["Debug"])
                 {
